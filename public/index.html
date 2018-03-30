@@ -349,7 +349,7 @@
         this.PosY = PosY;
         this.Radius = Radius;
         this.Densitiy = Densitiy;
-	this.Mass = Radius*Radius*Densitiy;
+        this.Mass = Radius*Radius*Densitiy;
 
         this.r = ColorR;
         this.g = ColorG;
@@ -479,8 +479,8 @@
    	Ufo.SpeedX = 0;
 	Ufo.SpeedY = 0; 
 	mouseDown = false;
-    	lastMouseX = null;
-    	lastMouseY = null;
+	lastMouseX = null;
+	lastMouseY = null;
 	UfoShadows = [];
 	numUfoShadows = 0;
     }
@@ -501,24 +501,24 @@
 
         gl.blendFunc(gl.SRC_COLOR, gl.ONE);
 
-	var Crash = false;
+        var Crash = false;
         for (var i in SpaceObjects) {
-	    SpaceObjects[i].draw();
+    	    SpaceObjects[i].draw();
 
-	    var RichtungX = SpaceObjects[i].PosX - Ufo.PosX;
-	    var RichtungY = SpaceObjects[i].PosY - Ufo.PosY; 	
- 	
-	    var Distance = Math.sqrt(RichtungX*RichtungX+RichtungY*RichtungY);
+    	    var RichtungX = SpaceObjects[i].PosX - Ufo.PosX;
+    	    var RichtungY = SpaceObjects[i].PosY - Ufo.PosY; 	
+     	
+    	    var Distance = Math.sqrt(RichtungX*RichtungX+RichtungY*RichtungY);
 
-	    if (Distance < SpaceObjects[i].Radius) {
-		alert("Crash!"); 
-		Crash = true;
-	    }	
+    	    if (Distance < SpaceObjects[i].Radius) {
+    		  alert("Crash!"); 
+    		  Crash = true;
+    	    }	
 
-	    var Force = SpaceObjects[i].Mass/(Distance * Distance);
+    	    var Force = SpaceObjects[i].Mass/(Distance * Distance);
 
-	    Ufo.SpeedX += RichtungX*Force/Distance;
-	    Ufo.SpeedY += RichtungY*Force/Distance;;	     		
+    	    Ufo.SpeedX += RichtungX*Force/Distance;
+    	    Ufo.SpeedY += RichtungY*Force/Distance;	     		
         }
 
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
@@ -551,7 +551,7 @@
 
 
         UfoShadows.push(new UfoShadow(Ufo.PosX, Ufo.PosY,0,0,0.001));
-	numUfoShadows += 1;
+        numUfoShadows += 1;
 
 
 	if (mouseDown) {
@@ -575,13 +575,13 @@
 
 
     function webGLStart() {
-        var canvas = document.getElementById("lesson12-canvas");
-	canvas.width  = window.innerWidth;
-	canvas.height = window.innerHeight;
+        var canvas = document.getElementById("gravity-canvas");
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
         initGL(canvas);
         initShaders();
         initWorldObjects();
-	resetGame();
+        resetGame();
 
         gl.clearColor(0.0, 0.0, 0.0, 1.0);
         //gl.enable(gl.DEPTH_TEST);
@@ -599,9 +599,9 @@
     }
 
     function resize_canvas() {
- 	var canvas = document.getElementById("lesson12-canvas");
-	canvas.width  = window.innerWidth;
-	canvas.height = window.innerHeight;
+        var canvas = document.getElementById("gravity-canvas");
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
         initGL(canvas);
     }
 </script>
@@ -611,7 +611,7 @@
 
 
 <body onload="webGLStart();" onresize="resize_canvas();" leftmargin="0" topmargin=0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
-    <canvas id="lesson12-canvas" style="border: none;"></canvas>
+    <canvas id="gravity-canvas" style="border: none;"></canvas>
 <!--
     <br />
 
